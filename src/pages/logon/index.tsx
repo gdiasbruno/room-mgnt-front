@@ -4,12 +4,16 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { gql, useMutation, useQuery } from '@apollo/client';
 
+import { Section } from './styles';
+
 const useStyles = makeStyles((theme: Theme) => createStyles({
 
   root: {
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
+      display: 'flex',
+      flexDirection: 'column',
     },
   },
 }));
@@ -39,7 +43,7 @@ const Logon: React.FC = () => {
   }
 
   return (
-    <>
+    <Section>
       <h1>Register</h1>
       <form
         onSubmit={(e) => {
@@ -87,7 +91,7 @@ const Logon: React.FC = () => {
         <Button type="submit" variant="contained">Register</Button>
       </form>
       <Link to="/">Login</Link>
-    </>
+    </Section>
 
   );
 };

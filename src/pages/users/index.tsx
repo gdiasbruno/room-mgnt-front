@@ -10,6 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import { Section } from './styles';
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -52,6 +54,7 @@ function FetchUsers() {
               <TableCell align="right">Company</TableCell>
               <TableCell align="right">E-mail</TableCell>
               <TableCell align="right">Delete</TableCell>
+              <TableCell align="right">Id</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -74,6 +77,7 @@ function FetchUsers() {
                   </button>
 
                 </TableCell>
+                <TableCell align="right">{row.id}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -84,12 +88,15 @@ function FetchUsers() {
 }
 
 const Users: React.FC = () => (
-  <>
+  <Section>
     <h1>Users</h1>
+    <br />
     <Link to="/update_user">Update User</Link>
+    <br />
     <FetchUsers />
+    <br />
     <Link to="/menu">Back to menu</Link>
-  </>
+  </Section>
 
 );
 

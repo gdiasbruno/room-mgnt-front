@@ -8,7 +8,8 @@ import Menu from '../pages/menu/index';
 import Rooms from '../pages/rooms/index';
 import CreateRoom from '../pages/rooms/createRoom';
 import Appointments from '../pages/appointments/index';
-import CreateAppointments from '../pages/appointments/createAppointment';
+import CreateAppointment from '../pages/appointments/createAppointment';
+import UpdateUser from '../pages/users/updateUser';
 
 const Routes: React.FC = () => (
   <>
@@ -20,7 +21,8 @@ const Routes: React.FC = () => (
       <Route path="/rooms" exact component={Rooms} />
       <Route path="/create_room" exact component={CreateRoom} />
       <Route path="/appointments" exact component={Appointments} />
-      <Route path="/create_appointment" exact component={CreateAppointments} />
+      <Route path="/create_appointment" exact component={CreateAppointment} />
+      <Route path="/update_user" exact component={UpdateUser} />
     </Switch>
 
   </>

@@ -4,9 +4,14 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { gql, useMutation, useQuery } from '@apollo/client';
 
+import { Section } from './styles';
+
 const useStyles = makeStyles((theme: Theme) => createStyles({
 
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
@@ -39,7 +44,7 @@ const CreateRoom: React.FC = () => {
   }
 
   return (
-    <>
+    <Section>
       <h1>Register a new Room</h1>
       <form
         onSubmit={(e) => {
@@ -80,7 +85,7 @@ const CreateRoom: React.FC = () => {
         <Button type="submit" variant="contained">Register</Button>
       </form>
       <a href="http://localhost:3000/rooms">Back to rooms</a>
-    </>
+    </Section>
 
   );
 };

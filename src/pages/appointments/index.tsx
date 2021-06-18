@@ -10,6 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import { Section } from './styles';
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -88,12 +90,15 @@ const Rooms: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <Section>
       <h1>Appointments</h1>
+      <br />
       <Link to="/create_appointment">Create an Appointment</Link>
+      <br />
       <FetchAppointments />
+      <br />
       <Link to="/menu">Back to menu</Link>
-    </>
+    </Section>
 
   );
 };

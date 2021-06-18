@@ -4,12 +4,16 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { gql, useMutation } from '@apollo/client';
 
+import { Section } from './styles';
+
 const useStyles = makeStyles((theme: Theme) => createStyles({
 
   root: {
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
+      display: 'flex',
+      flexDirection: 'column',
     },
   },
 }));
@@ -38,7 +42,7 @@ const Index: React.FC = () => {
   }
 
   return (
-    <>
+    <Section>
       <h1>Login</h1>
       <form
         onSubmit={(e) => {
@@ -71,8 +75,9 @@ const Index: React.FC = () => {
         />
         <Button type="submit" variant="contained">Login</Button>
       </form>
+
       <Link to="/logon">Create new user</Link>
-    </>
+    </Section>
 
   );
 };

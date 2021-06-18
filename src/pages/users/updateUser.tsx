@@ -4,9 +4,13 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { gql, useMutation, useQuery } from '@apollo/client';
 
+import { Section } from './styles';
+
 const useStyles = makeStyles((theme: Theme) => createStyles({
 
   root: {
+    display: 'flex',
+    flexDirection: 'column',
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
@@ -14,9 +18,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-const CREATE_USER = gql`
-  mutation createUser($data: CreateUserInput!) {
-    createUser(data: $data) {
+const UPDATE_USER = gql`
+  mutation updateUser($data: UpdateUserInput!, $id: String!) {
+    updateUser(data: $data, id: $id) {
+      name
+      id
       email
     }
   }
@@ -30,21 +36,22 @@ const Logon: React.FC = () => {
   let inputName:any;
   let inputCompany:any;
   let inputEmail:any;
+  let inputId:any;
   let inputPassword:any;
 
-  const [createUser, { data }] = useMutation(CREATE_USER);
+  const [updateUser, { data }] = useMutation(UPDATE_USER);
 
   if (data) {
-    alert(`User ${data.createUser.email} successfully updated`);
+    alert(`User ${data.updateUser.email} successfully updated`);
   }
 
   return (
-    <>
-      <h1>Register</h1>
+    <Section>
+      <h1>Update</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          createUser({
+          updateUser({
             variables: {
               data: {
                 company: inputCompany.value,
@@ -52,6 +59,7 @@ const Logon: React.FC = () => {
                 name: inputName.value,
                 password: inputPassword.value,
               },
+              id: inputId.value,
             },
           });
         }}
@@ -59,6 +67,13 @@ const Logon: React.FC = () => {
         noValidate
         autoComplete="off"
       >
+        <input
+          type="number"
+          placeholder="Id"
+          ref={(node) => {
+            inputId = node;
+          }}
+        />
         <input
           placeholder="Name"
           ref={(node) => {
@@ -84,10 +99,11 @@ const Logon: React.FC = () => {
             inputPassword = node;
           }}
         />
-        <Button type="submit" variant="contained">Register</Button>
+
+        <Button type="submit" variant="contained">Update</Button>
       </form>
-      <Link to="/">Login</Link>
-    </>
+      <a href="/users">Back to Users</a>
+    </Section>
 
   );
 };
