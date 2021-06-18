@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
@@ -68,7 +68,6 @@ function FetchAppointments() {
                   <button
                     type="button"
                     onClick={() => {
-                      console.log(typeof parseFloat(row.id));
                       deleteAppointment({ variables: { id: parseFloat(row.id) } });
                       window.location.reload();
                     }}
@@ -86,21 +85,17 @@ function FetchAppointments() {
   );
 }
 
-const Rooms: React.FC = () => {
-  const classes = useStyles();
+const Rooms: React.FC = () => (
+  <Section>
+    <h1>Appointments</h1>
+    <br />
+    <Link to="/create_appointment">Create an Appointment</Link>
+    <br />
+    <FetchAppointments />
+    <br />
+    <Link to="/menu">Back to menu</Link>
+  </Section>
 
-  return (
-    <Section>
-      <h1>Appointments</h1>
-      <br />
-      <Link to="/create_appointment">Create an Appointment</Link>
-      <br />
-      <FetchAppointments />
-      <br />
-      <Link to="/menu">Back to menu</Link>
-    </Section>
-
-  );
-};
+);
 
 export default Rooms;

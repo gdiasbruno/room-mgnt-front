@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
@@ -85,21 +85,17 @@ function FetchRooms() {
   );
 }
 
-const Rooms: React.FC = () => {
-  const classes = useStyles();
+const Rooms: React.FC = () => (
+  <Section>
+    <h1>Rooms</h1>
+    <br />
+    <Link to="/create_room">Register a room</Link>
+    <br />
+    <FetchRooms />
+    <br />
+    <Link to="/menu">Back to menu</Link>
+  </Section>
 
-  return (
-    <Section>
-      <h1>Rooms</h1>
-      <br />
-      <Link to="/create_room">Register a room</Link>
-      <br />
-      <FetchRooms />
-      <br />
-      <Link to="/menu">Back to menu</Link>
-    </Section>
-
-  );
-};
+);
 
 export default Rooms;

@@ -92,7 +92,7 @@ const CreateAppointment: React.FC = () => {
 
         <Button type="submit" variant="contained">Register</Button>
       </form>
-      <a href="http://localhost:3000/appointments">Back to appointments</a>
+      <a href="/appointments">Back to appointments</a>
     </Section>
 
   );

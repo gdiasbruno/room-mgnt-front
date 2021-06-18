@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 import { Section } from './styles';
 
@@ -31,8 +30,6 @@ const CREATE_ROOM = gql`
 const CreateRoom: React.FC = () => {
   const classes = useStyles();
 
-  const history = useHistory();
-
   let inputName:any;
   let inputCompany:any;
   let inputStatus:any;
@@ -40,6 +37,7 @@ const CreateRoom: React.FC = () => {
   const [createRoom, { data }] = useMutation(CREATE_ROOM);
 
   if (data) {
+    // eslint-disable-next-line no-alert
     alert(`Room ${data.createRoom.name} by company ${data.createRoom.company} successfully created`);
   }
 
@@ -84,7 +82,7 @@ const CreateRoom: React.FC = () => {
 
         <Button type="submit" variant="contained">Register</Button>
       </form>
-      <a href="http://localhost:3000/rooms">Back to rooms</a>
+      <a href="/rooms">Back to rooms</a>
     </Section>
 
   );

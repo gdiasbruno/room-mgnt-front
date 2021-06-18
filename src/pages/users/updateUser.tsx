@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 import { Section } from './styles';
 
@@ -42,6 +42,7 @@ const Logon: React.FC = () => {
   const [updateUser, { data }] = useMutation(UPDATE_USER);
 
   if (data) {
+    // eslint-disable-next-line no-alert
     alert(`User ${data.updateUser.email} successfully updated`);
   }
 

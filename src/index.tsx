@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,7 +8,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -39,8 +38,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

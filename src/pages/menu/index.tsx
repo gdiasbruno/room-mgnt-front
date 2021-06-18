@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import { Section } from './styles';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-
   button: {
     margin: '10px',
   },
@@ -23,7 +22,6 @@ const Menu: React.FC = () => {
         type="submit"
         variant="contained"
         href="/users"
-        // onClick={() => { history.push('/users'); }}
         className={classes.button}
       >
         Users

@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 import { Section } from './styles';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
 
   root: {
+    display: 'flex',
+    flexDirection: 'column',
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
-      display: 'flex',
-      flexDirection: 'column',
     },
   },
 }));
@@ -29,8 +29,6 @@ const CREATE_USER = gql`
 const Logon: React.FC = () => {
   const classes = useStyles();
 
-  const history = useHistory();
-
   let inputName:any;
   let inputCompany:any;
   let inputEmail:any;
@@ -39,6 +37,7 @@ const Logon: React.FC = () => {
   const [createUser, { data }] = useMutation(CREATE_USER);
 
   if (data) {
+    // eslint-disable-next-line no-alert
     alert(`User ${data.createUser.email} successfully created`);
   }
 
