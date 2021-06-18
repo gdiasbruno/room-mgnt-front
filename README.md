@@ -4,7 +4,6 @@ A front-end project to [room-mgnt-api](https://github.com/Jonathansoufer/room-mg
 
 ## Installation
 
-Create a .env file at your project root and specify port number there. Like "PORT=3005"
 
 ```bash
 $ yarn install
